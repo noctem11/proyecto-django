@@ -1,0 +1,135 @@
+{% extends "plantilla_base.html" %} {% block content %} {% load iconic %}
+<div class="container">
+  <div class="row">
+    <figure>
+      <blockquote class="blockquote">
+        <p class="mb-0">
+          En un rincón olvidado del universo, flota una estación espacial cubierta de líquenes 
+          fluorescentes que crecen en ausencia de gravedad.
+        </p>
+      </blockquote>
+      <figcaption class="blockquote-footer">
+        Noctem
+        <cite title="Sonder son(interludio)"
+          >Nova/Noctem.</cite
+        >
+      </figcaption>
+    </figure>
+  </div>
+</div>
+
+<div class="row iconos">
+  <div class="row container d-flex justify-content-center">
+    <div class="col-4 d-flex justify-content-center" style="margin: auto">
+      <a class="text-decoration-none" href="biblioteca/bibliotecas/">
+        <div
+          class="card text-white bg-dark mb-3 text-center"
+          style="max-width: 20rem"
+        >
+          <div class="card-header">{% iconic_icon "bank" size=50 %}</div>
+          <div class="card-body">
+            <h4 class="card-title">Gestión de</br> Biblioteca</h4>
+            <p class="card-text">
+              Información general de la biblioteca actual.
+            </p>
+          </div>
+          <div class="card-footer text-muted"></div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-4 d-flex justify-content-center">
+      <a class="text-decoration-none" href="/listado_autores">
+        <div
+          class="card text-white bg-dark mb-3 text-center"
+          style="max-width: 20rem"
+        >
+          <div class="card-header">{% iconic_icon "user" size=50 %}</div>
+          <div class="card-body">
+            <h4 class="card-title">Gestión de</br> Autores</h4>
+            <p class="card-text">
+              Gestione completamente los autores de las obras de la Biblioteca.
+            </p>
+          </div>
+          <div class="card-footer text-muted"></div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-4 d-flex justify-content-center">
+      <a class="text-decoration-none" href="/listado_libros">
+        <div
+          class="card text-white bg-dark mb-3 text-center"
+          style="max-width: 20rem"
+        >
+          <div class="card-header">{% iconic_icon "book" size=50 %}</div>
+          <div class="card-body">
+            <h4 class="card-title">Gestión de</br> Libros</h4>
+            <p class="card-text">
+              Control de libros y recursos varios de la biblioteca.
+            </p>
+          </div>
+          <div class="card-footer text-muted"></div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="row container d-flex justify-content-center">
+    <div class="col-4 d-flex justify-content-center">
+      <a class="text-decoration-none" href="/listado_lectores">
+        <div
+          class="card text-white bg-dark mb-3 text-center"
+          style="max-width: 20rem"
+        >
+          <div class="card-header">{% iconic_icon "users" size=50 %}</div>
+          <div class="card-body">
+            <h4 class="card-title">Gestión de</br> Lectores</h4>
+            <p class="card-text">
+              Crear, editar y gestionar el comportamiento de los lectores.
+            </p>
+          </div>
+          <div class="card-footer text-muted"></div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-4 d-flex justify-content-center">
+      <a class="text-decoration-none" href="biblioteca/prestamos/">
+        <div
+          class="card text-white bg-dark mb-3 text-center"
+          style="max-width: 20rem"
+        >
+          <div class="card-header">{% iconic_icon "share" size=50 %}</div>
+          <div class="card-body">
+            <h4 class="card-title">Préstamo de</br> Libros</h4>
+            <p class="card-text">
+              Manejo de préstamos y devoluciones de libros.
+            </p>
+          </div>
+          <div class="card-footer text-muted"></div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-4 d-flex justify-content-center">
+      {% if user.is_authenticated %}
+        <a class="text-decoration-none" href="/listado_comunas">
+      {% else %}
+        <a class="text-decoration-none" href="{% url 'login' %}?next=/listado_comunas">
+      {% endif %}
+        <div class="card text-white bg-dark mb-3 text-center" style="max-width: 20rem">
+          <div class="card-header">{% iconic_icon "settings" size=50 %}</div>
+          <div class="card-body">
+            <h4 class="card-title">Configuración de</br> Sistema</h4>
+            <p class="card-text">
+              Configuración general del sistema y parámetros del sistema.
+            </p>
+          </div>
+          <div class="card-footer text-muted"></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %} {% load static %}

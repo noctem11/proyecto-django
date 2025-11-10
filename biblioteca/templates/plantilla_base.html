@@ -1,0 +1,100 @@
+{% load static %}{% load iconic %}
+<!DOCTYPE html>
+<html lang="es" xml:lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>{% block title %}Gestión Biblioteca{% endblock %}</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/datatables.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}" />
+
+    {% block estilos %}{% endblock %}
+     <script
+      type="text/javascript"
+      src="{% static 'scripts/jquery-3.7.1.min.js' %}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static 'scripts/bootstrap.js' %}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static 'scripts/datatables.min.js' %}"
+    ></script>>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"
+            >{% iconic_icon "table-columns" size=50 %}</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarColor02"
+            aria-controls="navbarColor02"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="{%url 'pagina_inicio'%}"
+                  >Inicio
+                  <span class="visually-hidden">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{%url 'listado_autores'%}">Autores</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{%url 'listado_libros'%}">Libros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{%url 'listado_lectores'%}"
+                  >Lectores</a
+                >
+              </li>
+              <li class="nav-item dropdown"></li>
+            </ul>
+            <form action="{% url 'logout' %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="nav-link">
+                Salir {% iconic_icon "log-out" %}
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      {% block cabecera %}
+      <div class="row">
+        <div class="col-12 text-center">
+          <h1>Sistema de Gestión de Biblioteca</h1>
+        </div>
+      </div>
+      {% endblock %}
+    </header>
+
+    <main class="container contenido-principal">
+      {% block content %}
+      <!-- El contenido específico de cada página se insertará aquí -->
+      {% endblock %} {% comment %}
+      <div class="mx-auto"></div>
+      {% endcomment %}
+    </main>
+
+    <hr />
+    <footer>
+      <p>&copy; 2025 Benjamin Sarabia</p>
+    </footer>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>
